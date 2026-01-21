@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buschis Gravel Ride Vol. 1</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Shrikhand & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=Shrikhand&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'gravel-beige': '#F9F5EB',
+                        'gravel-pink': '#FFC4D6',
+                        'gravel-blue': '#1A3C5B',
+                        'gravel-accent': '#FF8E72', // Lachsfarben
+                    },
+                    fontFamily: {
+                        'display': ['Shrikhand', 'cursive'],
+                        'body': ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #F9F5EB;
+            color: #1A3C5B;
+        }
+        
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom decorative shapes */
+        .blob {
+            position: absolute;
+            filter: blur(40px);
+            z-index: -1;
+            opacity: 0.6;
+        }
+        
+        /* Text Outline Effect for contrast if needed */
+        .text-outline {
+            text-shadow: 2px 2px 0px #FFC4D6;
+        }
+
+        .image-container {
+            border-radius: 40px;
+            overflow: hidden;
+            transform: rotate(-2deg);
+            transition: transform 0.3s ease;
+        }
+        
+        .image-container:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        /* Marquee Animation */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            animation: marquee 20s linear infinite;
+        }
+    </style>
+</head>
+<body class="font-body selection:bg-gravel-pink selection:text-gravel-blue overflow-x-hidden flex flex-col min-h-screen">
+
+    <!-- Decorative Background Elements -->
+    <div class="blob bg-gravel-pink w-96 h-96 rounded-full top-0 left-0 -translate-x-1/2 -translate-y-1/2 fixed"></div>
+    <div class="blob bg-gravel-accent w-80 h-80 rounded-full bottom-0 right-0 translate-x-1/3 translate-y-1/3 fixed"></div>
+
+    <main class="flex-grow flex flex-col justify-center items-center px-4 py-12 relative z-10">
+        
+        <!-- Main Content Wrapper -->
+        <div class="max-w-4xl w-full mx-auto text-center relative">
+
+            <!-- Subline Badge -->
+            <div class="inline-block mb-6 animate-bounce">
+                <span class="bg-gravel-blue text-gravel-pink px-6 py-2 rounded-full text-sm uppercase tracking-widest font-bold shadow-lg transform rotate-2 inline-block">
+                    Buschis Gravel Ride Vol. 1
+                </span>
+            </div>
+
+            <!-- Massive Headline (Overlapping) -->
+            <h1 class="font-display text-6xl md:text-8xl lg:text-9xl text-gravel-blue leading-[0.8] mb-8 relative z-20 mix-blend-multiply">
+                Ohne Gels,<br>
+                <span class="text-gravel-accent">ohne mich.</span>
+            </h1>
+
+            <!-- Image Section with Overlap -->
+            <div class="relative w-full max-w-2xl mx-auto -mt-8 md:-mt-16 z-10 mb-12">
+                <!-- Pink Circle Behind -->
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-gravel-pink rounded-full z-0 animate-pulse"></div>
+                
+                <div class="image-container shadow-2xl border-8 border-white relative z-10">
+                    <!-- Placeholder image matching description: Top shot gravel/nature -->
+                    <img src="https://images.unsplash.com/photo-1596726853683-163daef2a55c?q=80&w=1200&auto=format&fit=crop" 
+                         alt="Gravel Biker in der Natur von oben" 
+                         class="w-full h-auto object-cover aspect-[4/3]">
+                </div>
+
+                <!-- Floating Date Badge -->
+                <div class="absolute -bottom-6 -left-4 md:-left-12 bg-gravel-accent text-white p-6 rounded-full shadow-xl transform rotate-6 z-20 flex flex-col items-center justify-center w-32 h-32 border-4 border-gravel-beige">
+                    <span class="text-xl font-bold font-body">11.-12.04.</span>
+                </div>
+            </div>
+
+            <!-- Info Text -->
+            <div class="max-w-lg mx-auto mb-12 space-y-4">
+                <p class="text-xl md:text-2xl font-light text-gravel-blue/80">
+                    Packt die breiten Reifen ein. Wir fahren ins Grüne, essen gut und lassen den Tacho Tacho sein.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4 text-sm font-bold uppercase tracking-wide text-gravel-blue">
+                    <span class="flex items-center gap-2 bg-white/50 px-4 py-2 rounded-full"><i data-lucide="mountain"></i> Länge: TBD</span>
+                    <span class="flex items-center gap-2 bg-white/50 px-4 py-2 rounded-full"><i data-lucide="beer"></i> Essen: TBD</span>
+                    <span class="flex items-center gap-2 bg-white/50 px-4 py-2 rounded-full"><i data-lucide="map-pin"></i> Location: TBD</span>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="flex flex-col items-center gap-4">
+                <button onclick="downloadICS()" class="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-gravel-blue font-body rounded-full focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-gravel-blue hover:bg-gravel-accent hover:scale-105 shadow-xl">
+                    <span class="mr-2">Save the Date</span>
+                    <i data-lucide="calendar-plus" class="w-5 h-5 group-hover:rotate-12 transition-transform"></i>
+                </button>
+                <p class="text-sm text-gravel-blue/60 mt-2">Klick, damit du es nicht vergisst!</p>
+            </div>
+
+            <!-- Mood Section (Hype) -->
+            <div class="mt-24 w-full relative z-10">
+                <h2 class="font-display text-4xl md:text-5xl text-gravel-accent mb-12 transform -rotate-2">Der Vibe</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 justify-items-center">
+                    <!-- Mood 1 -->
+                    <div class="flex flex-col items-center gap-3 group">
+                        <div class="w-40 h-40 rounded-full overflow-hidden border-4 border-gravel-pink shadow-lg transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
+                            <img src="https://images.unsplash.com/photo-1541625602330-2277a4c46182?q=80&w=400&auto=format&fit=crop" alt="Dreckiges Fahrrad" class="w-full h-full object-cover">
+                        </div>
+                        <span class="font-display text-gravel-blue text-xl transform group-hover:scale-110 transition-transform">Staub fressen</span>
+                    </div>
+
+                    <!-- Mood 2 -->
+                    <div class="flex flex-col items-center gap-3 group md:-mt-8">
+                        <div class="w-40 h-40 rounded-full overflow-hidden border-4 border-gravel-blue shadow-lg transform transition-all duration-300 group-hover:scale-110 group-hover:-rotate-3">
+                            <img src="https://images.unsplash.com/photo-1571343743510-a1290334857b?q=80&w=400&auto=format&fit=crop" alt="Cheers mit Bier" class="w-full h-full object-cover">
+                        </div>
+                        <span class="font-display text-gravel-blue text-xl transform group-hover:scale-110 transition-transform">Gut leben</span>
+                    </div>
+
+                    <!-- Mood 3 -->
+                    <div class="flex flex-col items-center gap-3 group">
+                        <div class="w-40 h-40 rounded-full overflow-hidden border-4 border-gravel-accent shadow-lg transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-2">
+                            <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=400&auto=format&fit=crop" alt="Wald und Natur" class="w-full h-full object-cover">
+                        </div>
+                        <span class="font-display text-gravel-blue text-xl transform group-hover:scale-110 transition-transform">Kopf aus</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Marquee Banner -->
+    <div class="w-full bg-gravel-blue py-4 overflow-hidden relative z-20 transform -rotate-1 shadow-xl mb-8">
+        <div class="whitespace-nowrap animate-marquee inline-block">
+            <!-- Content repeated to ensure seamless loop -->
+            <span class="text-gravel-pink font-display text-2xl md:text-3xl mx-6">NO DROP POLICY</span> • 
+            <span class="text-gravel-beige font-display text-2xl md:text-3xl mx-6">PIZZA & BEER</span> • 
+            <span class="text-gravel-accent font-display text-2xl md:text-3xl mx-6">GOOD VIBES ONLY</span> • 
+            <span class="text-gravel-pink font-display text-2xl md:text-3xl mx-6">GRAVEL GRINDER</span> • 
+            <span class="text-gravel-beige font-display text-2xl md:text-3xl mx-6">NATURE LOVERS</span> • 
+            <span class="text-gravel-accent font-display text-2xl md:text-3xl mx-6">KEIN STRESS</span> • 
+            <span class="text-gravel-pink font-display text-2xl md:text-3xl mx-6">NO DROP POLICY</span> • 
+            <span class="text-gravel-beige font-display text-2xl md:text-3xl mx-6">PIZZA & BEER</span> • 
+            <span class="text-gravel-accent font-display text-2xl md:text-3xl mx-6">GOOD VIBES ONLY</span> • 
+            <span class="text-gravel-pink font-display text-2xl md:text-3xl mx-6">GRAVEL GRINDER</span> • 
+            <span class="text-gravel-beige font-display text-2xl md:text-3xl mx-6">NATURE LOVERS</span> • 
+            <span class="text-gravel-accent font-display text-2xl md:text-3xl mx-6">KEIN STRESS</span>
+        </div>
+    </div>
+
+    <footer class="text-center pb-8 pt-2 text-gravel-blue/40 text-sm relative z-10">
+        <p>&copy; 2026 Buschis Gravel Ride. Ride Safe.</p>
+    </footer>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // ICS Download Function
+        function downloadICS() {
+            // Event Configuration
+            const eventStart = "20260411"; // YYYYMMDD
+            const eventEnd = "20260413";   // YYYYMMDD (End date is exclusive in ICS usually, so +1 day for all day event)
+            const title = "Ohne Gels, ohne mich. - Buschis Gravel Ride";
+            const description = "Buschis Gravel Ride Vol. 1. Breite Reifen, gute Laune. Details folgen!";
+            const location = "Startpunkt TBA";
+
+            // ICS Content Construction
+            const icsContent = [
+                "BEGIN:VCALENDAR",
+                "VERSION:2.0",
+                "PRODID:-//Buschis Gravel Ride//DE",
+                "CALSCALE:GREGORIAN",
+                "BEGIN:VEVENT",
+                "DTSTART;VALUE=DATE:" + eventStart,
+                "DTEND;VALUE=DATE:" + eventEnd,
+                "SUMMARY:" + title,
+                "DESCRIPTION:" + description,
+                "LOCATION:" + location,
+                "STATUS:CONFIRMED",
+                "SEQUENCE:0",
+                "END:VEVENT",
+                "END:VCALENDAR"
+            ].join("\r\n");
+
+            // Create Blob and Trigger Download
+            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.setAttribute('download', 'buschis-gravel-ride.ics');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>
